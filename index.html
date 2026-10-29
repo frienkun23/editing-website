@@ -1,243 +1,118 @@
-/* =========================================================
-   EASY EDITS: change colours and fonts here
-   ========================================================= */
-:root {
-  --bg: #000000;          /* page background */
-  --surface: #0f0f11;     /* placeholder boxes */
-  --text: #f5f5f7;        /* main text */
-  --muted: #86868b;       /* secondary text */
-  --line: rgba(255, 255, 255, 0.12);
-  --accent: #2997ff;      /* "Redesign" label colour */
-  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --gap-section: clamp(7rem, 16vw, 14rem);  /* space between sections */
-  --wrap: 1180px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Editing & Thumbnail Design</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* ---------- Reset & base ---------- */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font);
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-img { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__logo">Portfolio</div>
+    <div class="nav__links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-.wrap { width: min(var(--wrap), 100% - 3rem); margin-inline: auto; }
-.section { padding-block: var(--gap-section) 0; }
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__shade"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Visual<br>Polish.</h1>
+      <p class="hero__sub">High-end video editing and clean, text-free thumbnail redesigns for gaming and Minecraft creators.</p>
+      <a href="#work" class="btn">View My Work</a>
+    </div>
+  </header>
 
-/* ---------- Type ---------- */
-.h2 {
-  font-size: clamp(2.6rem, 7.5vw, 6rem);
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
-}
-.h3 {
-  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin: clamp(4rem, 8vw, 7rem) 0 2rem;
-}
-.lead {
-  color: var(--muted);
-  font-size: clamp(1.15rem, 2vw, 1.5rem);
-  max-width: 34rem;
-  margin-top: 1.75rem;
-}
+  <main class="wrap">
+    
+    <!-- Services -->
+    <section id="services" class="section services">
+      <div class="service reveal">
+        <h3>Thumbnail Design</h3>
+        <p>Clean, aesthetic compositions with perfect visual balance.</p>
+      </div>
+      <div class="service reveal">
+        <h3>Video Editing</h3>
+        <p>Cinematic pacing and retention-driven cuts.</p>
+      </div>
+      <div class="service reveal">
+        <h3>YouTube Shorts</h3>
+        <p>High-impact vertical content optimized for the algorithm.</p>
+      </div>
+    </section>
 
-/* ---------- Scroll reveal (fade + slide up) ---------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1);
-}
-.reveal.in { opacity: 1; transform: none; }
-.services .reveal:nth-child(2), .shorts-grid .reveal:nth-child(2) { transition-delay: .12s; }
-.services .reveal:nth-child(3), .shorts-grid .reveal:nth-child(3) { transition-delay: .24s; }
-.shorts-grid .reveal:nth-child(4) { transition-delay: .36s; }
+    <!-- Thumbnail Redesigns -->
+    <section id="work" class="section">
+      <h2 class="h2 reveal">The Redesigns.</h2>
+      <p class="lead reveal">Side-by-side comparisons of my text-free Minecraft thumbnail layouts.</p>
+      
+      <div class="compare-list">
+        <!-- Comparison 1 -->
+        <figure class="compare reveal">
+          <div class="compare__pair">
+            <div class="compare__side">
+              <!-- REPLACE IMAGE URL HERE -->
+              <img src="https://images.unsplash.com/photo-1607513746994-51f730a44832?auto=format&fit=crop&w=800&q=80" alt="Original thumbnail">
+              <span class="tag">Original</span>
+            </div>
+            <div class="compare__side compare__side--after">
+              <!-- REPLACE IMAGE URL HERE -->
+              <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=800&q=80" alt="Redesigned thumbnail">
+              <span class="tag tag--after">My Redesign</span>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </section>
 
-/* ---------- Nav ---------- */
-.nav {
-  position: fixed; inset: 0 0 auto 0; z-index: 10;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.1rem clamp(1.5rem, 4vw, 3rem);
-  background: rgba(0, 0, 0, 0.55);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid var(--line);
-}
-.nav__logo { font-weight: 700; letter-spacing: -0.02em; }
-.nav__links { display: flex; gap: clamp(1rem, 3vw, 2.25rem); font-size: .9rem; color: var(--muted); }
-.nav__links a { transition: color .25s; }
-.nav__links a:hover { color: var(--text); }
+    <!-- Video Grid -->
+    <section class="section">
+      <h2 class="h2 reveal">Video Edits.</h2>
+      <div class="video-grid reveal">
+        <!-- Video Placeholder 1 -->
+        <div class="video">
+          <div class="video__ph">
+            <div class="play"></div>
+            <span>Placeholder for Video 1</span>
+          </div>
+        </div>
+        <!-- Video Placeholder 2 -->
+        <div class="video">
+          <div class="video__ph">
+            <div class="play"></div>
+            <span>Placeholder for Video 2</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-/* ---------- Hero ---------- */
-.hero {
-  position: relative;
-  min-height: 100vh; min-height: 100svh;
-  display: flex; align-items: center;
-  overflow: hidden;
-}
-.hero__bg {
-  position: absolute; inset: 0;
-  background-color: #0b0b12;
-  background-size: cover; background-position: center;
-  transform: scale(1.08);
-  animation: settle 2.4s cubic-bezier(.2,.7,.2,1) forwards;
-}
-.hero__shade {
-  position: absolute; inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.35) 40%, #000 100%),
-    radial-gradient(ellipse at 20% 50%, rgba(0,0,0,.6), transparent 70%);
-}
-.hero__content {
-  position: relative;
-  width: min(var(--wrap), 100% - 3rem);
-  margin-inline: auto;
-  padding-top: 5rem;
-}
-.hero__title {
-  font-size: clamp(3.2rem, 11vw, 9.5rem);
-  font-weight: 800;
-  line-height: .96;
-  letter-spacing: -0.05em;
-  animation: rise 1.4s .2s cubic-bezier(.2,.7,.2,1) both;
-}
-.hero__sub {
-  color: #c7c7cc;
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  max-width: 30rem;
-  margin: 2rem 0 3rem;
-  animation: rise 1.4s .45s cubic-bezier(.2,.7,.2,1) both;
-}
-.hero .btn { animation: rise 1.4s .7s cubic-bezier(.2,.7,.2,1) both; }
+  </main>
 
-.btn {
-  display: inline-block;
-  background: var(--text); color: #000;
-  font-weight: 600;
-  padding: 1rem 2.4rem;
-  border-radius: 999px;
-  transition: transform .35s cubic-bezier(.2,.7,.2,1), background .35s, box-shadow .35s;
-}
-.btn:hover { transform: scale(1.05); background: #fff; box-shadow: 0 0 60px rgba(255,255,255,.25); }
+  <!-- Contact -->
+  <footer id="contact" class="section contact">
+    <div class="wrap">
+      <h2 class="h2 reveal">Let's Work.</h2>
+      <a href="mailto:your@email.com" class="contact__mail reveal">your@email.com</a>
+    </div>
+  </footer>
 
-@keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
-@keyframes settle { to { transform: scale(1); } }
+  <!-- Scroll Animation Script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 
-/* ---------- Services ---------- */
-.services {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(2.5rem, 6vw, 5rem);
-  margin-top: clamp(4rem, 8vw, 7rem);
-}
-.service { border-top: 1px solid var(--line); padding-top: 2rem; }
-.service h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); letter-spacing: -0.03em; margin-bottom: 1rem; }
-.service p { color: var(--muted); max-width: 22rem; }
-
-/* ---------- Redesign comparison ---------- */
-.compare-list { margin-top: clamp(4rem, 8vw, 7rem); display: grid; gap: clamp(5rem, 10vw, 9rem); }
-.compare__pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(.6rem, 1.5vw, 1.25rem); }
-.compare__side {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  background: var(--surface);
-  border-radius: clamp(10px, 1.6vw, 22px);
-  overflow: hidden;
-}
-.compare__side img { width: 100%; height: 100%; object-fit: cover; }
-.compare__side:not(.compare__side--after) img { filter: grayscale(.55) brightness(.75) contrast(.9); }
-.compare__side--after { box-shadow: 0 0 0 1px rgba(255,255,255,.18), 0 30px 80px rgba(41,151,255,.18); }
-.tag {
-  position: absolute; left: .9rem; bottom: .9rem;
-  font-size: .8rem; font-weight: 600;
-  padding: .3rem .8rem; border-radius: 999px;
-  background: rgba(0,0,0,.6);
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-  color: #d1d1d6;
-}
-.tag--after { background: var(--accent); color: #fff; }
-.compare figcaption { color: var(--muted); font-size: .95rem; margin-top: 1.25rem; max-width: 36rem; }
-
-/* ---------- Videos ---------- */
-.video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(2rem, 4vw, 3rem); }
-.video p { margin-top: 1rem; font-weight: 500; }
-.video__ph, .short__ph, .video iframe, .short iframe {
-  width: 100%; border: 0;
-  border-radius: clamp(10px, 1.6vw, 22px);
-  background: radial-gradient(circle at 50% 40%, #1c1c20, var(--surface));
-  border: 1px solid var(--line);
-}
-.video__ph, .video iframe { aspect-ratio: 16 / 9; }
-.short__ph, .short iframe { aspect-ratio: 9 / 16; }
-.video__ph {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 1rem; color: var(--muted); font-size: .9rem;
-}
-.short__ph { display: flex; align-items: center; justify-content: center; }
-.play {
-  width: 64px; height: 64px; border-radius: 50%;
-  background: rgba(255,255,255,.1);
-  position: relative;
-}
-.play::after {
-  content: ""; position: absolute; top: 50%; left: 54%;
-  transform: translate(-50%, -50%);
-  border-style: solid; border-width: 9px 0 9px 15px;
-  border-color: transparent transparent transparent #fff;
-}
-.shorts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2.5vw, 2rem); }
-
-/* ---------- Contact ---------- */
-.contact { text-align: center; padding-bottom: 4rem; }
-.contact__mail {
-  display: inline-block;
-  margin-top: clamp(2rem, 4vw, 3rem);
-  font-size: clamp(1.4rem, 4.5vw, 3rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  border-bottom: 2px solid var(--line);
-  padding-bottom: .3rem;
-  overflow-wrap: anywhere;
-  transition: border-color .3s, color .3s;
-}
-.contact__mail:hover { border-color: var(--text); }
-.socials { display: flex; justify-content: center; gap: 1.25rem; margin-top: 4rem; }
-.socials a {
-  width: 52px; height: 52px; border-radius: 50%;
-  display: grid; place-items: center;
-  border: 1px solid var(--line); color: var(--muted);
-  transition: color .3s, border-color .3s, transform .3s;
-}
-.socials a:hover { color: var(--text); border-color: var(--text); transform: translateY(-3px); }
-.copy { color: var(--muted); font-size: .85rem; margin-top: clamp(5rem, 10vw, 8rem); }
-
-/* ---------- Tablet ---------- */
-@media (max-width: 900px) {
-  .services { grid-template-columns: 1fr; gap: 3rem; }
-  .shorts-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* ---------- Mobile ---------- */
-@media (max-width: 640px) {
-  .nav__links a:not(:last-child) { display: none; }  /* keep only "Contact" on small screens */
-  .video-grid { grid-template-columns: 1fr; }
-  .compare__pair { gap: .4rem; }                      /* keeps both thumbnails side by side */
-  .tag { left: .5rem; bottom: .5rem; font-size: .68rem; padding: .2rem .55rem; }
-}
-
-/* ---------- Respect "reduce motion" settings ---------- */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .hero__bg, .hero__title, .hero__sub, .hero .btn { animation: none; transform: none; }
-}
+</body>
+</html>
